@@ -7,9 +7,11 @@ import android.os.Bundle;
 import android.view.Window;
 import android.view.WindowManager;
 
+import com.example.sawarikar.activities.LoginActivity;
+
 public class MainActivity extends AppCompatActivity {
 
-    public static int SPLASH_TIME_OUT =7000;
+    public static int SPLASH_TIME_OUT =700;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,7 +23,7 @@ public class MainActivity extends AppCompatActivity {
         new Handler().postDelayed(new Runnable(){
             @Override
             public void run(){
-                Intent loginIntent = new Intent(MainActivity.this, LoginRegisterActivity.class);
+                Intent loginIntent = new Intent(MainActivity.this, LoginRegister.class);
                 startActivity(loginIntent);
                 finish();
             }
