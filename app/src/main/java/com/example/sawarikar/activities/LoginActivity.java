@@ -12,6 +12,7 @@ import android.support.v7.widget.AppCompatTextView;
 import android.util.Log;
 import android.view.View;
 
+import com.example.sawarikar.Dashboard;
 import com.example.sawarikar.R;
 import com.example.sawarikar.RegisterActivity;
 import com.example.sawarikar.helpers.InputValidation;
@@ -92,6 +93,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         switch (v.getId()) {
             case R.id.appCompatButtonLogin:
                 verifyFromSQLite();
+                Intent dashIntent = new Intent(LoginActivity.this, Dashboard.class);
+                startActivity(dashIntent);
                 break;
             case R.id.textViewLinkRegister:
                 // Navigate to RegisterActivity
