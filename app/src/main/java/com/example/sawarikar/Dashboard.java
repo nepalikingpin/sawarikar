@@ -7,8 +7,6 @@ import android.support.v7.widget.CardView;
 import android.view.View;
 import android.widget.Toast;
 
-import com.example.sawarikar.activities.Vehicles;
-
 public class Dashboard extends AppCompatActivity {
 
     private CardView first, second, third, fourth, fifth, six;
@@ -29,9 +27,18 @@ public class Dashboard extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent i;
-                i = new Intent(Dashboard.this, Vehicles.class);
+                i = new Intent(Dashboard.this,VehicleInformation.class);
                 startActivity(i);
-                Toast.makeText(Dashboard.this, "Sucess", Toast.LENGTH_LONG).show();
+            }
+        });
+
+
+        second.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i;
+                i = new Intent(Dashboard.this,AddVehicle.class);
+                startActivity(i);
             }
         });
     }

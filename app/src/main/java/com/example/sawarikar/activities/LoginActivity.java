@@ -92,10 +92,11 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.appCompatButtonLogin:
-                verifyFromSQLite();
+               verifyFromSQLite();
                 Intent dashIntent = new Intent(LoginActivity.this, Dashboard.class);
                 startActivity(dashIntent);
-                break;
+               break;
+
             case R.id.textViewLinkRegister:
                 // Navigate to RegisterActivity
                 Intent intentRegister = new Intent(getApplicationContext(), RegisterActivity.class);
@@ -109,7 +110,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
      */
     private void verifyFromSQLite() {
         if (!inputValidation.isInputEditTextFilled(textInputEditTextEmail, textInputLayoutEmail, getString(R.string.error_message_email))) {
-            return;
+            return ;
         }
         if (!inputValidation.isInputEditTextEmail(textInputEditTextEmail, textInputLayoutEmail, getString(R.string.error_message_email))) {
             return;
@@ -122,7 +123,6 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 , textInputEditTextPassword.getText().toString().trim())) {
 
 
-
 //            Intent accountsIntent = new Intent(activity, UsersListActivity.class);
 //            accountsIntent.putExtra("EMAIL", textInputEditTextEmail.getText().toString().trim());
 //            emptyInputEditText();
@@ -130,7 +130,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
 
         } else {
-            // Snack Bar to show success message that record is wrong
+            // Snack Bar to show message that record is wrong
             Snackbar.make(nestedScrollView, getString(R.string.error_valid_email_password), Snackbar.LENGTH_LONG).show();
         }
     }

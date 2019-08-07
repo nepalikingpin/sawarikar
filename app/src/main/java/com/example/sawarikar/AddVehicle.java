@@ -1,4 +1,4 @@
-package com.example.sawarikar.activities;
+package com.example.sawarikar;
 
 import android.app.Activity;
 import android.app.DatePickerDialog;
@@ -170,31 +170,29 @@ public class AddVehicle extends AppCompatActivity {
         showDialog(999);
     }
 
-    @Override
-    protected Dialog onCreateDialog(int id) {
-        // TODO Auto-generated method stub
-        if (id == 999) {
-            DatePickerDialog datePickerDialog = DatePickerDialog.newInstance(myDateListener, calendarYear, month, day);
-            datePickerDialog.show(getSupportFragmentManager(), "Datepickerdialog");
-        }
-        return null;
-    }
+//    @Override
+//    protected Dialog onCreateDialog(int id) {
+//        // TODO Auto-generated method stub
+//        if (id == 999) {
+//            DatePickerDialog datePickerDialog = DatePickerDialog.newInstance(myDateListener, calendarYear, month, day);
+//            datePickerDialog.show(getSupportFragmentManager(), "Datepickerdialog");
+//        }
+//        return null;
+//    }
 
-    private DatePickerDialog.OnDateSetListener myDateListener = new
-            DatePickerDialog.OnDateSetListener() {
-                @Override
-                public void onDateSet(DatePickerDialog datePickerDialog, int i, int i1, int i2) {
-                    showDate(i2, i1 + 1, i);
-                }
-
-            };
-
+//    private DatePickerDialog.OnDateSetListener myDateListener = new
+//            DatePickerDialog.OnDateSetListener() {
+//                @Override
+//                public void onDateSet(DatePickerDialog datePickerDialog, int i, int i1, int i2) {
+//                    showDate(i2, i1 + 1, i);
+//                }
+//
+//            };
+//
 
     private void showDate(int day, int month, int year) {
 
         date.setText(new StringBuilder().append(day).append("-")
                 .append(month).append("-").append(year));
-    }
-}
     }
 }

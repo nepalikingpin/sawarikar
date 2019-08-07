@@ -21,11 +21,11 @@ import android.widget.ArrayAdapter;
 
 import android.widget.Toast;
 
-import com.example.android.vehicletax.Database.DatabaseHelper;
-import com.example.android.vehicletax.InputValidation.CheckValidity;
+//import com.example.android.vehicletax.Database.DatabaseHelper;
+//import com.example.android.vehicletax.InputValidation.CheckValidity;
 
 import com.example.sawarikar.sql.DatabaseHelper;
-import com.hornet.dateconverter.DatePicker.DatePickerDialog;
+//import com.hornet.dateconverter.DatePicker.DatePickerDialog;
 
 import java.util.Calendar;
 
@@ -221,24 +221,24 @@ public class EditInformation extends AppCompatActivity {
         showDialog(999);
     }
 
-    @Override
-    protected Dialog onCreateDialog(int id) {
-        // TODO Auto-generated method stub
-        if (id == 999) {
-            DatePickerDialog datePickerDialog = DatePickerDialog.newInstance(myDateListener, calendarYear, month, day);
-            datePickerDialog.show(getSupportFragmentManager(), "Datepickerdialog");
-        }
-        return null;
-    }
-
-    private DatePickerDialog.OnDateSetListener myDateListener = new
-            DatePickerDialog.OnDateSetListener() {
-                @Override
-                public void onDateSet(DatePickerDialog datePickerDialog, int i, int i1, int i2) {
-                    showDate(i2, i1 + 1, i);
-                }
-
-            };
+//    @Override
+//    protected Dialog onCreateDialog(int id) {
+//        // TODO Auto-generated method stub
+//        if (id == 999) {
+//            DatePickerDialog datePickerDialog = DatePickerDialog.newInstance(myDateListener, calendarYear, month, day);
+//            datePickerDialog.show(getSupportFragmentManager(), "Datepickerdialog");
+//        }
+//        return null;
+//    }
+//
+//    private DatePickerDialog.OnDateSetListener myDateListener = new
+//            DatePickerDialog.OnDateSetListener() {
+//                @Override
+//                public void onDateSet(DatePickerDialog datePickerDialog, int i, int i1, int i2) {
+//                    showDate(i2, i1 + 1, i);
+//                }
+//
+//            };
 
     private void showDate(int day, int month, int year) {
 

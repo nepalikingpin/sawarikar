@@ -1,21 +1,15 @@
 package com.example.sawarikar;
 
-package com.example.android.vehicletax;
-
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.Toolbar;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.widget.TextView;
 
 
-import com.example.android.vehicletax.Database.DatabaseHelper;
+import com.example.sawarikar.sql.DatabaseHelper;
 
 public class VehicleInformation extends AppCompatActivity {
     TextView name, number, cc, year, type, fuel, category, date;
-    Toolbar toolbar;
     public Vehicle vehicle;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,25 +43,25 @@ public class VehicleInformation extends AppCompatActivity {
         date.setText(vehicle.getDate());
     }
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-
-        switch (item.getItemId()){
-            case android.R.id.home:
-                finish();
-                break;
-
-            case R.id.action_edit:
-                Intent edit = new Intent(VehicleInformation.this, EditInformation.class);
-                edit.putExtra("number", vehicle.getNumber());
-                startActivity(edit);
-        }
-        return false;
-    }
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu_edit, menu);
-        return true;
-    }
+//    @Override
+//    public boolean onOptionsItemSelected(MenuItem item) {
+//
+//        switch (item.getItemId()){
+//            case android.R.id.home:
+//                finish();
+//                break;
+//
+//            case R.id.action_edit:
+//                Intent edit = new Intent(VehicleInformation.this, EditInformation.class);
+//                edit.putExtra("number", vehicle.getNumber());
+//                startActivity(edit);
+//        }
+//        return false;
+//    }
+//
+//    @Override
+//    public boolean onCreateOptionsMenu(Menu menu) {
+//        getMenuInflater().inflate(R.menu.menu_edit, menu);
+//        return true;
+//    }
 }
