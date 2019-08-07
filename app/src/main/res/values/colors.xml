@@ -6,4 +6,10 @@
     <color name="colorBackground">#413e4f</color>
     <color name="colorText">#FFFFFF</color>
     <color name="colorTextHint">#51d8c7</color>
+    <color name="background">#FAFAFA</color>
+    <color name="viewBg">#303030</color>
+    <color name="card_background">#424242</color>
+    <color name="translucent">#30000000</color>
+    <color name="transparent">#00000000</color>
+    <color name="teal">#009688</color>
 </resources>
