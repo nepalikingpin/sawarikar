@@ -93,8 +93,6 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         switch (v.getId()) {
             case R.id.appCompatButtonLogin:
                verifyFromSQLite();
-                Intent dashIntent = new Intent(LoginActivity.this, Dashboard.class);
-                startActivity(dashIntent);
                break;
 
             case R.id.textViewLinkRegister:
@@ -122,12 +120,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         if (databaseHelper.checkUser(textInputEditTextEmail.getText().toString().trim()
                 , textInputEditTextPassword.getText().toString().trim())) {
 
-
-//            Intent accountsIntent = new Intent(activity, UsersListActivity.class);
-//            accountsIntent.putExtra("EMAIL", textInputEditTextEmail.getText().toString().trim());
-//            emptyInputEditText();
-//            startActivity(accountsIntent);
-
+            Intent dashIntent = new Intent(LoginActivity.this, Dashboard.class);
+            startActivity(dashIntent);
 
         } else {
             // Snack Bar to show message that record is wrong

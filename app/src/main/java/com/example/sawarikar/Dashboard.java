@@ -23,23 +23,23 @@ public class Dashboard extends AppCompatActivity {
         fifth = (CardView) findViewById(R.id.fifth);
         six = (CardView) findViewById(R.id.six);
 
-        first.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent i;
-                i = new Intent(Dashboard.this,VehicleInformation.class);
-                startActivity(i);
-            }
-        });
-
-
-        second.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent i;
-                i = new Intent(Dashboard.this,AddVehicle.class);
-                startActivity(i);
-            }
-        });
+//        first.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Intent i;
+//                i = new Intent(Dashboard.this,VehicleInformation.class);
+//                startActivity(i);
+//            }
+//        });
+//
+//
+//        second.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Intent i;
+//                i = new Intent(Dashboard.this,AddVehicle.class);
+//                startActivity(i);
+//            }
+//        });
     }
 }

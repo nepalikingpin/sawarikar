@@ -105,12 +105,11 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
 
             case R.id.appCompatButtonRegister:
                 postDataToSQLite();
-                Intent loginIntent = new Intent(RegisterActivity.this, LoginActivity.class);
-                startActivity(loginIntent);
+                break;
 
             case R.id.appCompatTextViewLoginLink:
-                Intent login1Intent = new Intent(RegisterActivity.this, LoginActivity.class);
-                startActivity(login1Intent);
+                finish();
+                break;
         }
     }
 
