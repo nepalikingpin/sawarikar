@@ -79,10 +79,10 @@ public class AddVehicle extends AppCompatActivity {
 
                     if (toEdit) {
                         // update contact
-                        isInserted = db.updateData(Integer.valueOf(vehicle_id), eTvehicle_name.getText().toString(), eTvehicle_number.getText().toString(), eTvehicle_cc.getText().toString(),eTvehicle_year.getText().toString(),eTvehicle_type.getText().toString()eTvehicle_fuel.getText().toString()eTvehicle_date.getText().toString());
+                        isInserted = db.updateData(Integer.valueOf(vehicle_id), eTvehicle_name.getText().toString(), eTvehicle_number.getText().toString(), eTvehicle_cc.getText().toString(),eTvehicle_year.getText().toString(),eTvehicle_type.getText().toString(),eTvehicle_fuel.getText().toString(),eTvehicle_date.getText().toString());
                     } else {
                         // insert contact
-                        isInserted = db.addvehicle(eTvehicle_name.getText().toString(), eTvehicle_number.getText().toString(), eTvehicle_cc.getText().toString(),eTvehicle_year.getText().toString(),eTvehicle_type.getText().toString()eTvehicle_fuel.getText().toString()eTvehicle_date.getText().toString());
+                        isInserted = db.addvehicle(eTvehicle_name.getText().toString(), eTvehicle_number.getText().toString(), eTvehicle_cc.getText().toString(),eTvehicle_year.getText().toString(),eTvehicle_type.getText().toString(),eTvehicle_fuel.getText().toString(),eTvehicle_date.getText().toString());
 
                     }
 
