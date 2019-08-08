@@ -8,6 +8,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 import com.example.sawarikar.model.User;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 public class DatabaseHelper extends SQLiteOpenHelper {
@@ -27,10 +28,22 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     private static final String COLUMN_USER_EMAIL = "user_email";
     private static final String COLUMN_USER_PASSWORD = "user_password";
 
+
+    public static final String VEHICLES_TABLE_NAME ="vehicles";
+    public static final String VEHICLES_COLUMN_ID = "vehicle_id";
+    public static final String VEHICLES_COLUMN_NAME = "vehicle_name";
+    public static final String VEHICLES_COLUMN_NUMBER = "vehicle_number";
+    public static final String VEHICLES_COLUMN_CC = "vehicle_cc";
+    public static final String VEHICLES_COLUMN_YEAR = "vehicle_year";
+    public static final String VEHICLES_COLUMN_TYPE = "vehicle_type";
+    public static final String VEHICLES_COLUMN_FUEL = "vehicle_fuel";
+    public static final String VEHICLES_COLUMN_DATE = "vehicle_date";
+
     // create table sql query
     private String CREATE_USER_TABLE = "CREATE TABLE " + TABLE_USER + "("
             + COLUMN_USER_ID + " INTEGER PRIMARY KEY AUTOINCREMENT," + COLUMN_USER_NAME + " TEXT,"
             + COLUMN_USER_EMAIL + " TEXT," + COLUMN_USER_PASSWORD + " TEXT" + ")";
+
 
     // drop table sql query
     private String DROP_USER_TABLE = "DROP TABLE IF EXISTS " + TABLE_USER;
@@ -46,7 +59,13 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
+
         db.execSQL(CREATE_USER_TABLE);
+
+        db.execSQL(
+                "create table " +VEHICLES_TABLE_NAME +"(vehicle_id integer primary key autoincrement,vehicle_name text,vehicle_number text,vehicle_cc text,vehicle_year text,vehicle_type text,vehicle_fuel text,vehicle_date text)"
+        );
+
     }
 
 
@@ -55,6 +74,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
         //Drop User Table if exist
         db.execSQL(DROP_USER_TABLE);
+
+        db.execSQL("DROP TABLE IF EXISTS vehicles");
 
 
         // Create tables again
@@ -80,6 +101,111 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.close();
     }
 
+    public boolean addvehicle(String vehicle_name ,String vehicle_number,String vehicle_cc,String vehicle_year,String vehicle_type,String vehicle_fuel,String vehicle_date){
+        SQLiteDatabase sq =this.getWritableDatabase();
+
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(VEHICLES_COLUMN_NAME,vehicle_name);
+        contentValues.put(VEHICLES_COLUMN_NUMBER,vehicle_number);
+        contentValues.put(VEHICLES_COLUMN_CC,vehicle_cc);
+        contentValues.put(VEHICLES_COLUMN_YEAR,vehicle_year);
+        contentValues.put(VEHICLES_COLUMN_TYPE,vehicle_type);
+        contentValues.put(VEHICLES_COLUMN_FUEL,vehicle_fuel);
+        contentValues.put(VEHICLES_COLUMN_DATE,vehicle_date);
+
+        long reslt = sq.insert(VEHICLES_TABLE_NAME,null,contentValues);
+
+        if(reslt== -1){
+            return false;
+        }
+
+        else{
+            return true;
+        }
+    }
+
+    //get db data
+
+    public ArrayList<HashMap<String,String>> getDbData(){
+        SQLiteDatabase sq = this.getReadableDatabase();
+        Cursor cur = sq.rawQuery("select * from " + VEHICLES_TABLE_NAME,null);
+        ArrayList<HashMap<String,String>>arrayListVehicles =new ArrayList<>();
+        while(cur.moveToNext()){
+            HashMap<String,String> hashMapVehicleDetails = new HashMap<>();
+            hashMapVehicleDetails.put("name",cur.getString(cur.getColumnIndex(VEHICLES_COLUMN_NAME)));
+            hashMapVehicleDetails.put("number",cur.getString(cur.getColumnIndex(VEHICLES_COLUMN_NUMBER)));
+            hashMapVehicleDetails.put("cc",cur.getString(cur.getColumnIndex(VEHICLES_COLUMN_CC)));
+            hashMapVehicleDetails.put("year",cur.getString(cur.getColumnIndex(VEHICLES_COLUMN_YEAR)));
+            hashMapVehicleDetails.put("type",cur.getString(cur.getColumnIndex(VEHICLES_COLUMN_TYPE)));
+            hashMapVehicleDetails.put("fuel",cur.getString(cur.getColumnIndex(VEHICLES_COLUMN_FUEL)));
+            hashMapVehicleDetails.put("date",cur.getString(cur.getColumnIndex(VEHICLES_COLUMN_DATE)));
+
+            arrayListVehicles.add(hashMapVehicleDetails);
+        }
+
+        return arrayListVehicles;
+    }
+
+    public boolean updateData(Integer vehicle_id,String vehicle_name, String vehicle_number,String vehicle_cc,String vehicle_year,String vehicle_type,String vehicle_fuel,String vehicle_date){
+        //update data in database
+        SQLiteDatabase sq = this.getWritableDatabase();
+
+        ContentValues contentValues = new ContentValues();
+
+        contentValues.put(VEHICLES_COLUMN_NAME,vehicle_name);
+        contentValues.put(VEHICLES_COLUMN_NUMBER,vehicle_number);
+        contentValues.put(VEHICLES_COLUMN_CC,vehicle_cc);
+        contentValues.put(VEHICLES_COLUMN_YEAR,vehicle_year);
+        contentValues.put(VEHICLES_COLUMN_TYPE,vehicle_year);
+        contentValues.put(VEHICLES_COLUMN_FUEL,vehicle_fuel);
+        contentValues.put(VEHICLES_COLUMN_DATE,vehicle_date);
+
+        sq.update(VEHICLES_TABLE_NAME,contentValues,"vehicle_id=?",new String[]{String.valueOf(vehicle_id)});
+
+        return true;
+    }
+
+    public boolean deleteData(Integer vehicle_id){
+        SQLiteDatabase sqLiteDatabase =this.getWritableDatabase();
+        int res = sqLiteDatabase.delete(VEHICLES_TABLE_NAME,"vehicle_id =?",new String[] {String.valueOf(vehicle_id)});
+
+        if(res == 0){
+            return false;
+        }
+
+        else{
+            return true;
+        }
+    }
+
+    public Integer deleteVehicle(Integer vehicle_id){
+        SQLiteDatabase db  = this.getWritableDatabase();
+        return db.delete(VEHICLES_TABLE_NAME,"vehicle_id =?",new String[]{Integer.toString(vehicle_id)});
+    }
+
+    //Get vehicle details
+    public ArrayList<HashMap<String,String>>GetVehicles(){
+        SQLiteDatabase sq =this.getWritableDatabase();
+        ArrayList<HashMap<String,String>>vehicleList = new ArrayList<>();
+        String query = "SELECT * FROM "+ VEHICLES_TABLE_NAME;
+        Cursor cursor = sq.rawQuery(query,null);
+        while(cursor.moveToNext()){
+            HashMap<String,String> vehicle =new HashMap<>();
+            vehicle.put("name",cursor.getString(cursor.getColumnIndex(VEHICLES_COLUMN_NAME)));
+            vehicle.put("number",cursor.getString(cursor.getColumnIndex(VEHICLES_COLUMN_NUMBER)));
+            vehicle.put("cc",cursor.getString(cursor.getColumnIndex(VEHICLES_COLUMN_CC)));
+            vehicle.put("year",cursor.getString(cursor.getColumnIndex(VEHICLES_COLUMN_YEAR)));
+            vehicle.put("type",cursor.getString(cursor.getColumnIndex(VEHICLES_COLUMN_TYPE)));
+            vehicle.put("fuel",cursor.getString(cursor.getColumnIndex(VEHICLES_COLUMN_FUEL)));
+            vehicle.put("date",cursor.getString(cursor.getColumnIndex(VEHICLES_COLUMN_DATE)));
+            vehicleList.add(vehicle);
+        }
+        return vehicleList;
+    }
+
+
+
+
     /**
      * This method is to fetch all user and return the list of user records
      *
@@ -99,6 +225,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         List<User> userList = new ArrayList<User>();
 
         SQLiteDatabase db = this.getReadableDatabase();
+
 
         // query the user table
         /**
