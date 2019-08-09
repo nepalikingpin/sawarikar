@@ -41,5 +41,14 @@ public class Dashboard extends AppCompatActivity {
                 startActivity(i);
             }
         });
+
+        third.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i;
+                i = new Intent(Dashboard.this,TaxRate.class);
+                startActivity(i);
+            }
+        });
     }
 }

@@ -21,6 +21,7 @@ public class VehicleInformation extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_vehicle_information);
+        getSupportActionBar().hide();
 
         db =new DatabaseHelper(VehicleInformation.this);
 

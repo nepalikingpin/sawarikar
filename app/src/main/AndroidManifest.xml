@@ -9,7 +9,8 @@
         android:roundIcon="@drawable/icon"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".VehicleInformation"></activity>
+        <activity android:name=".TaxRate"></activity>
+        <activity android:name=".VehicleInformation" />
         <activity android:name=".AddVehicle" />
         <activity android:name=".activities.AddVehicle" />
         <activity android:name=".Dashboard" />

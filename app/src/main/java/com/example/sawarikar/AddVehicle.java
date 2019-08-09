@@ -26,6 +26,7 @@ public class AddVehicle extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_vehicle);
+        getSupportActionBar().hide();
 
         db = new DatabaseHelper(AddVehicle.this);
         //getting data from intent
